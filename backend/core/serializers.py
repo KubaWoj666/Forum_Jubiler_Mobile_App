@@ -31,3 +31,13 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+
+class MainCategoryWitchSubCategorySerializer(serializers.ModelSerializer):
+    sub_categories = serializers.SerializerMethodField()
+    class Meta: 
+        model = MainCategory
+        fields = ["main_name", "sub_categories"]
+    
+    def get_sub_categories(self, obj):
+        sub_cat = Category.objects.filter(main_cat_name=obj.id)
+        return CategorySerializer(sub_cat, many=True).data

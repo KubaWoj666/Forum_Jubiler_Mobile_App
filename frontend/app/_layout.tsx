@@ -32,7 +32,7 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack screenOptions={{
         headerLeft: () => (
-            <Link href="/" asChild>
+            <Link href="/modal" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
@@ -52,6 +52,13 @@ export default function RootLayout() {
     }}>
         <Stack.Screen name="index" options={{headerShown: false}}/>
         <Stack.Screen name="(tabs)" options={{ title: "Forum Jubiler", headerTitleStyle: {color:"#303470"} }} />
+        <Stack.Screen
+          name="modal"
+          options={{
+            presentation: 'modal',
+            headerShown: false,
+          }}
+        />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>

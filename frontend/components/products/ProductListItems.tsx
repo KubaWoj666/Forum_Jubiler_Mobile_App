@@ -8,22 +8,21 @@ type ProductProps = {
 
 }
 
-const ProductListItems = ({product, onPress}: ProductProps, ) => {
-
+const ProductListItems = ({ product, onPress }: ProductProps) => {
   return (
     <Link href={`/(tabs)/products/${product.id}`} asChild>
-  <Pressable onPress={onPress} style={styles.card}>
-    {product.images && Array.isArray(product.images) && product.images.length > 0 ? (
-      <Image style={styles.image} source={{ uri: product.images[0].image }} />
-    ) : (
-      <Text>No Image Available</Text>
-    )}
-    <Text style={styles.name}>{product.name}</Text>
-    <Text>{product.sale_price} zł</Text>
-  </Pressable>
-</Link>
-  )
-}
+      <Pressable onPress={onPress} style={styles.card}>
+        {product.images && Array.isArray(product.images) && product.images.length > 0 ? (
+          <Image style={styles.image} source={{ uri: product.images[0].image }} />
+        ) : (
+          <Text>No Image Available</Text>
+        )}
+        <Text style={styles.name}>{product.name}</Text>
+        <Text>{product.sale_price} zł</Text>
+      </Pressable>
+    </Link>
+  );
+};
 
 const styles = StyleSheet.create({
     card: {

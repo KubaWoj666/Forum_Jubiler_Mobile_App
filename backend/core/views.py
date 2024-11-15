@@ -4,8 +4,8 @@ from rest_framework import status
 from rest_framework import generics
 
 
-from .models import Product
-from .serializers import ProductSerializer, ProductDetailSerializer
+from .models import Product, MainCategory, Category
+from .serializers import ProductSerializer, ProductDetailSerializer, MainCategorySerializer, CategorySerializer, MainCategoryWitchSubCategorySerializer
 
 class ProductListView(APIView):
     def get(self, request):
@@ -44,4 +44,8 @@ class SingleProductGeneric(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     # lookup_field = "id"
-    
+
+
+class AllMainCategories(generics.ListCreateAPIView):
+    queryset = MainCategory.objects.all()
+    serializer_class = MainCategoryWitchSubCategorySerializer
