@@ -16,3 +16,8 @@ index_page: boolean
 created_at: string
 updated_at: string
 }
+
+export type MainCategory = {
+    id: string
+    main_name: string
+}

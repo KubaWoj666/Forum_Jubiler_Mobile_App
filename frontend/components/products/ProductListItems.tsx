@@ -8,10 +8,10 @@ type ProductProps = {
 
 }
 
-const ProductListItems = ({ product, onPress }: ProductProps) => {
+const ProductListItems = ({ product }: ProductProps) => {
   return (
     <Link href={`/(tabs)/products/${product.id}`} asChild>
-      <Pressable onPress={onPress} style={styles.card}>
+      <Pressable  style={styles.card}>
         {product.images && Array.isArray(product.images) && product.images.length > 0 ? (
           <Image style={styles.image} source={{ uri: product.images[0].image }} />
         ) : (
@@ -27,14 +27,14 @@ const ProductListItems = ({ product, onPress }: ProductProps) => {
 const styles = StyleSheet.create({
     card: {
         width: 180,
-        height: 220, // Zwiększona wysokość karty, by pomieścić tekst i obraz
+        height: 220, 
         padding: 5,
         backgroundColor: "white",
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 20,
-        margin: 5,  // Odstępy między kartami
-        shadowColor: '#000',  // Dodanie cienia, by karty były bardziej widoczne
+        margin: 5,  
+        shadowColor: '#000',  
         shadowOffset: { width: 0, height: 0.5 },
         shadowOpacity: 0.5,
         shadowRadius: 1,
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
 
     image: {
         padding: 20,
-        // height:"auto",
         width: "100%",
         height: "80%",
         resizeMode: "cover",

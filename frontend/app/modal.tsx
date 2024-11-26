@@ -1,7 +1,8 @@
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable, FlatList } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import { Link} from 'expo-router'; 
-import { FlatList } from 'react-native-gesture-handler';
+import MainCategoriesList from '@/components/categories/MainCategoriesList';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Modal = () => {
 
@@ -23,9 +24,17 @@ const Modal = () => {
     }
 
   return (
-    <FlatList data={data} renderItem={undefined} >
-        
-    </FlatList>
+    <SafeAreaView style={styles.container}>
+      <FlatList style={styles.text}  data={data} keyExtractor={(item) => item.id} renderItem={({item}) => <MainCategoriesList  mainCategory={item}/>} 
+      ListHeaderComponent={(
+        <>
+           <Image style={styles.logo} source={require("../assets/banners/logo1.png")} />
+
+        </>
+      )}>
+
+      </FlatList>
+    </SafeAreaView>
     // <View style={styles.container}>
     //   <Image style={styles.logo} source={require("../assets/banners/logo1.png")} />
     //     <View style={styles.line}/>
