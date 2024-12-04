@@ -25,8 +25,17 @@ export default function TabLayout() {
           ),
         }}
       />
+
       <Tabs.Screen
         name="products"
+        options={{
+          
+          tabBarButton: () => null, 
+        }}
+      />
+
+      <Tabs.Screen
+        name="mainCat"
         options={{
           
           tabBarButton: () => null, 

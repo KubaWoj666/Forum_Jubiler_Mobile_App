@@ -2,6 +2,7 @@ import { View, Text, Pressable, StyleSheet, } from 'react-native'
 import React from 'react'
 import { MainCategory } from '@/types'
 import { Link } from 'expo-router'
+import mainName from '@/app/(tabs)/mainCat/[mainName]'
 
 
 type MainCategoryProps = {
@@ -10,7 +11,7 @@ type MainCategoryProps = {
 
 const MainCategoriesList = ({mainCategory}: MainCategoryProps) => {
   return (
-    <Link href={`/(tabs)/`} asChild>
+    <Link href={`/(tabs)/mainCat/${mainCategory.main_name}`} asChild>
       <Pressable >
         <Text style={styles.text}>{mainCategory.main_name}</Text>
       </Pressable>

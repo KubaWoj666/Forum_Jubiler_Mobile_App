@@ -21,9 +21,9 @@ const Index = () => {
   const fetchData = async () => {
     try {
       const [vintageResponse, weddingResponse, engagementResponse] = await Promise.all([
-        fetch("http://127.0.0.1:8000/api/generic/?is_for_sale=true&category=Biżuteria Dawna"),
-        fetch("http://127.0.0.1:8000/api/generic/?is_for_sale=true&category=Ślub i Zaręczyny&sub_category=Obrączki"),
-        fetch("http://127.0.0.1:8000/api/generic/?is_for_sale=true&category=%C5%9Alub%20i%20Zar%C4%99czyny&sub_category=Pier%C5%9Bcionki%20Zar%C4%99czynowe")
+        fetch("http://127.0.0.1:8000/api/generic/?is_for_sale=true&category=Biżuteria Dawna&limit=4"),
+        fetch("http://127.0.0.1:8000/api/generic/?is_for_sale=true&category=Ślub i Zaręczyny&sub_category=Obrączki&limit=4"),
+        fetch("http://127.0.0.1:8000/api/generic/?is_for_sale=true&category=%C5%9Alub%20i%20Zar%C4%99czyny&sub_category=Pier%C5%9Bcionki%20Zar%C4%99czynowe&limit=4")
       ]);
       const vintage = await vintageResponse.json();
       const wedding = await weddingResponse.json();

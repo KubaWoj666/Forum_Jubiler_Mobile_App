@@ -29,6 +29,7 @@ class ProductListViewGeneric(generics.ListCreateAPIView):
         is_for_sale = self.request.query_params.get("is_for_sale")
         category = self.request.query_params.get("category")
         sub_category = self.request.query_params.get("sub_category")
+        limit = self.request.query_params.get("limit")
         if is_for_sale is not None:
             is_for_sale = is_for_sale.lower() == "true"
             queryset = queryset.filter(is_for_sale=is_for_sale)
@@ -37,7 +38,14 @@ class ProductListViewGeneric(generics.ListCreateAPIView):
         if category:
             queryset = queryset.filter(category__main_cat_name__main_name=category)
         
-        return queryset[:4]
+        if limit is not None:
+            try:
+                limit = int(limit)
+                queryset = queryset[:limit]
+            except ValueError:
+                pass
+            
+        return queryset
         
 
 class SingleProductGeneric(generics.RetrieveAPIView):

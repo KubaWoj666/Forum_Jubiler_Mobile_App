@@ -20,7 +20,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     details = serializers.HyperlinkedIdentityField(view_name="product_detail", lookup_field="pk")
     images = ImageSerializer(many=True)
-    category = CategorySerializer()
+    # category = CategorySerializer()
     class Meta:
         model = Product
         fields = "__all__"
