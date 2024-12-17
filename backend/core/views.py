@@ -55,5 +55,14 @@ class SingleProductGeneric(generics.RetrieveAPIView):
 
 
 class AllMainCategories(generics.ListCreateAPIView):
-    queryset = MainCategory.objects.all()
+
     serializer_class = MainCategoryWitchSubCategorySerializer
+
+    def get_queryset(self):
+        queryset = MainCategory.objects.all()
+        main_name = self.request.query_params.get("main_name")
+
+        if main_name is not None:
+            queryset = queryset.filter(main_name=main_name)
+
+        return queryset

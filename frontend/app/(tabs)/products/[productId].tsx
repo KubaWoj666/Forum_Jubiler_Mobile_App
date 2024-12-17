@@ -1,11 +1,13 @@
-import { View, Text,  Image, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, FlatList } from 'react-native'
+import { View, Text,  Image, StyleSheet, SafeAreaView, ScrollView, Pressable, TouchableOpacity, FlatList } from 'react-native'
 import React, { useEffect, useState , useRef} from 'react'
 import { Stack, useLocalSearchParams } from 'expo-router'
 import ProductListItems from '@/components/products/ProductListItems';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
 
 const productId = () => {
+  const navigation = useNavigation()
   const { productId } = useLocalSearchParams();  
   const [data, setData] = useState({detailProd: [], sameCatProd: []});
   const [viewedItems, setViewedItems] = useState([]);
@@ -113,6 +115,10 @@ const productId = () => {
                 
                 ListHeaderComponent={(
                   <>
+                  <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
+                    <Text style={styles.backText} >{"< Back"}</Text>
+                  </Pressable>
+
                   <Image style={styles.image} source={{ uri: mainImage }} />
 
                   <View style={styles.smallImagesContainer} >
@@ -237,6 +243,18 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 200,
     color: "#c29958",
+  },
+
+  backButton: {
+    // position: 'absolute',
+    // top: 50,
+    // left: 20,
+    padding: 10,
+  },
+  backText: {
+    fontSize: 18,
+    color: '#007AFF',
+    fontWeight: 'bold',
   },
 
 });

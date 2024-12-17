@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, Pressable, FlatList } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable, FlatList, } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import { Link} from 'expo-router'; 
 import MainCategoriesList from '@/components/categories/MainCategoriesList';
@@ -17,7 +17,7 @@ const Modal = () => {
             const response = await fetch("http://127.0.0.1:8000/api/main-categories")
             const data = await response.json()
             setData(data)
-            console.log(data)
+        
         }catch(error){
             console.error("Error fetching data: ", error)
         }
@@ -28,8 +28,11 @@ const Modal = () => {
       <FlatList style={styles.text}  data={data} keyExtractor={(item) => item.id} renderItem={({item}) => <MainCategoriesList  mainCategory={item}/>} 
       ListHeaderComponent={(
         <>
-           <Image style={styles.logo} source={require("../assets/banners/logo1.png")} />
-
+          <Link href={"/(tabs)"} asChild >
+            <Pressable>
+              <Image style={styles.logo} source={require("../assets/banners/logo1.png")} />
+            </Pressable>
+           </Link>
         </>
       )}>
 

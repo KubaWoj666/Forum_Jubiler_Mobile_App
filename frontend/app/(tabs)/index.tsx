@@ -29,7 +29,6 @@ const Index = () => {
       const wedding = await weddingResponse.json();
       const engagement = await engagementResponse.json()
       setData({vintage, wedding, engagement});
-      console.log(data.vintage)
       setLoading(false);
 
     } catch (error) {
