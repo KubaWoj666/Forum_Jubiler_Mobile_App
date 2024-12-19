@@ -1,9 +1,11 @@
-import { View, Text, FlatList, SafeAreaView, StyleSheet } from 'react-native'
+import { View, Text, FlatList, SafeAreaView, StyleSheet, Pressable, } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { useLocalSearchParams } from 'expo-router'
+import { Link, router, useLocalSearchParams } from 'expo-router'
 import ProductListItems from '@/components/products/ProductListItems';
+import {Stack } from "expo-router";
 
 const mainName = () => {
+
   const {mainName} = useLocalSearchParams();
   const [data, setData] = useState({products: [], subCategories: []})
 
@@ -45,13 +47,16 @@ const mainName = () => {
             renderItem={({ item }) => (
               <View style={styles.categoryContainer}>
                 <Text style={styles.mainCategory}>{item.main_name}</Text>
-
+                
+                
                 <View style={styles.subCategoriesContainer}>
                   {item.sub_categories && item.sub_categories.map((subCategory) => (
                     <View key={subCategory.id} style={styles.subCategoryBox}>
+                      <Pressable onPress={() => {router.push({pathname: "/(tabs)/mainCat/subCat/[subCatName]", params:{subCatName:subCategory.category_name, mainName: mainName }})}}>
                       <Text style={styles.subCategoryText}>
                         {subCategory.category_name}
                       </Text>
+                      </Pressable>
                     </View>
                   ))}
                 </View>

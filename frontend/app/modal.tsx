@@ -38,41 +38,7 @@ const Modal = () => {
 
       </FlatList>
     </SafeAreaView>
-    // <View style={styles.container}>
-    //   <Image style={styles.logo} source={require("../assets/banners/logo1.png")} />
-    //     <View style={styles.line}/>
-    //     <View>
-    //     <Link href="/(tabs)" asChild>
-    //         <Pressable >
-    //         <Text style={styles.text}>Home</Text>
-    //         </Pressable>
-    //     </Link>
-
-    //     <Link href="/(tabs)" asChild>
-    //         <Pressable >
-    //         <Text style={styles.text}>Home</Text>
-    //         </Pressable>
-    //     </Link>
-
-    //     <Link href="/(tabs)" asChild>
-    //         <Pressable >
-    //         <Text style={styles.text}>Home</Text>
-    //         </Pressable>
-    //     </Link>
-
-    //     <Link href="/(tabs)" asChild>
-    //         <Pressable >
-    //         <Text style={styles.text}>Home</Text>
-    //         </Pressable>
-    //     </Link>
-
-    //     <Link href="/(tabs)" asChild>
-    //         <Pressable >
-    //         <Text style={styles.text}>Home</Text>
-    //         </Pressable>
-    //     </Link>
-    //     </View>
-    // </View>
+    
   );
 };
 

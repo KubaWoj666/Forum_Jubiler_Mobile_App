@@ -115,10 +115,7 @@ const productId = () => {
                 
                 ListHeaderComponent={(
                   <>
-                  <Pressable onPress={() => navigation.goBack()} style={styles.backButton}>
-                    <Text style={styles.backText} >{"< Back"}</Text>
-                  </Pressable>
-
+      
                   <Image style={styles.image} source={{ uri: mainImage }} />
 
                   <View style={styles.smallImagesContainer} >
