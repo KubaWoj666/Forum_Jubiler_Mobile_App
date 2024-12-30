@@ -20,7 +20,7 @@ const subCatName = () => {
             const response = await fetch(`http://127.0.0.1:8000/api/generic/?category=${mainName}&sub_category=${subCatName}`)
             const  data = await response.json()
             setData(data)
-            console.log(data)
+            
         }
         catch (error)
         {

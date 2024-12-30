@@ -12,10 +12,14 @@ class MainCategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class CategorySerializer(serializers.ModelSerializer):
-    # main_cat_name = MainCategorySerializer()
+    main_cat_name = serializers.SerializerMethodField()
     class Meta:
         model = Category
         fields = "__all__"
+
+    def get_main_cat_name(self, obj):
+        main_cat = MainCategory.objects.get(main_name = obj.main_cat_name)
+        return main_cat.main_name
 
 class ProductSerializer(serializers.ModelSerializer):
     details = serializers.HyperlinkedIdentityField(view_name="product_detail", lookup_field="pk")

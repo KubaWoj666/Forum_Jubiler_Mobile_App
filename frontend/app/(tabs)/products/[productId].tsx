@@ -35,12 +35,14 @@ const productId = () => {
       const response  = await fetch(`http://127.0.0.1:8000/api/detail/${productId}/`)
       const detailProd = await response.json();
       addItemToViewed(detailProd.id)
+      console.log(detailProd.category.main_cat_name.main_name +  " ," + detailProd.category.category_name)
       const [ sameCatProdResponse] = await Promise.all([
         
-        fetch(`http://127.0.0.1:8000/api/generic/?is_for_sale=true&category=${detailProd.category.main_cat_name.main_name}&sub_category=${detailProd.category.category_name}`),
+        fetch(`http://127.0.0.1:8000/api/generic/?is_for_sale=true&category=${detailProd.category.main_cat_name}&sub_category=${detailProd.category.category_name}&limit=4`),
       ]) 
       
       const sameCatProd = await sameCatProdResponse.json();
+      console.log(sameCatProd)
       setData({detailProd, sameCatProd});
 
       // Ustaw domyślne główne zdjęcie
@@ -52,7 +54,8 @@ const productId = () => {
       console.error('Error fetching product details:', error);
     }
   };
-
+  
+  console.log(data.sameCatProd)
 
   const addItemToViewed = async (productId) =>{
     try{
@@ -115,7 +118,8 @@ const productId = () => {
                 
                 ListHeaderComponent={(
                   <>
-      
+
+
                   <Image style={styles.image} source={{ uri: mainImage }} />
 
                   <View style={styles.smallImagesContainer} >

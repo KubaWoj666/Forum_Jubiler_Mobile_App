@@ -51,8 +51,6 @@ class ProductListViewGeneric(generics.ListCreateAPIView):
 class SingleProductGeneric(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    # lookup_field = "id"
-
 
 class AllMainCategories(generics.ListCreateAPIView):
 

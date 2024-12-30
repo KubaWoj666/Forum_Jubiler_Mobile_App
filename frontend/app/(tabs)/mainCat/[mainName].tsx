@@ -8,7 +8,7 @@ const mainName = () => {
 
   const {mainName} = useLocalSearchParams();
   const [data, setData] = useState({products: [], subCategories: []})
-
+  
   useEffect(() => {
     fetchData();
   }, [mainName]);
